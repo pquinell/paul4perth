@@ -3,25 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paul Quinnell for Perth Council</title>
-<meta name="description" content="Paul Quinnell is running for Town of Perth Council on October 26, 2026. Full campaign site coming soon.">
+<title>Paul Quinnell for Perth Council — Who is Perth growing for?</title>
+<meta name="description" content="Paul Quinnell is running for Town of Perth Council on October 26, 2026. Homes for people who already live here, growth that pays its own way, and infrastructure built for the weather we're getting.">
+
+<!-- ===================================================================
+     BEFORE PUBLISHING, FIX THESE. Search the file for "TODO".
+     1. DOMAIN. This file says paulforperth.ca. The old file said
+        paul4perth.ca. Pick one and make it consistent everywhere.
+     2. PHONE NUMBER in the contact section, or delete that line.
+     3. share.jpg needs to exist in the repo root for Facebook previews.
+     4. paul.jpg needs to exist in the repo root for the portrait.
+     5. sign.png needs to exist in the repo root for the Help out section.
+     6. Verify the voting window and PIN letter mailing date with
+        Amanda Noel before this goes live.
+     7. Confirm the DC by-law and Housing Design Catalogue points in
+        pillar 2 with the Treasurer.
+     =================================================================== -->
 
 <meta property="og:title" content="Paul Quinnell for Perth Council">
-<meta property="og:description" content="Running for Town of Perth Council, October 26, 2026.">
+<meta property="og:description" content="Who is Perth growing for? Running for Town of Perth Council, October 26, 2026.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://paul4perth.ca">
-<meta property="og:image" content="https://paul4perth.ca/share.jpg">
+<meta property="og:url" content="https://paul4perth.ca"><!-- TODO domain -->
+<meta property="og:image" content="https://paul4perth.ca/sign.png"><!-- TODO domain + image -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N57H5RHP5L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-N57H5RHP5L');
 </script>
 
@@ -46,6 +60,7 @@
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{
   margin:0;
   background:var(--paper);
@@ -55,7 +70,7 @@ body{
   line-height:1.62;
   -webkit-font-smoothing:antialiased;
 }
-h1,h2{
+h1,h2,h3.d{
   font-family:var(--display);
   font-weight:600;
   line-height:1.05;
@@ -67,6 +82,38 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:2px}
 
 .wrap{max-width:820px;margin:0 auto;padding:0 var(--pad)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--pad);top:8px;position:absolute;background:#fff;padding:.5rem .9rem;z-index:99}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(242,244,240,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.nav .wrap{display:flex;align-items:center;gap:1.4rem;height:56px}
+.nav .mark{
+  font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:-.02em;
+  text-decoration:none;white-space:nowrap;flex:none;
+}
+.nav ul{
+  display:flex;gap:1.25rem;list-style:none;margin:0;padding:0;
+  overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.l{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink-soft);white-space:nowrap;padding:.3rem 0;
+  border-bottom:1.5px solid transparent;
+}
+.nav a.l:hover{color:var(--green);border-bottom-color:var(--green)}
+.nav .vote{margin-left:auto;flex:none}
+.nav .vote a{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;background:var(--green);color:#fff;padding:.45rem .8rem;border-radius:2px;
+  white-space:nowrap;
+}
+@media(max-width:720px){ .nav .mark{display:none} .nav .vote{display:none} }
 
 .eyebrow{
   font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
@@ -78,8 +125,9 @@ a{color:inherit}
 
 .btn{
   display:inline-block;font-weight:600;font-size:.94rem;text-decoration:none;
-  padding:.82rem 1.5rem;border-radius:2px;
+  padding:.82rem 1.5rem;border-radius:2px;cursor:pointer;
   border:1.5px solid var(--green);background:var(--green);color:#fff;
+  font-family:var(--body);
   transition:background .12s ease, transform .12s ease;
 }
 .btn:hover{background:var(--green-deep);border-color:var(--green-deep);transform:translateY(-1px)}
@@ -87,10 +135,12 @@ a{color:inherit}
 .btn-ghost:hover{background:var(--green-tint);color:var(--green-deep)}
 .btn-light{background:#fff;border-color:#fff;color:var(--green-deep)}
 .btn-light:hover{background:#DCEBDF;border-color:#DCEBDF;color:var(--green-deep)}
+.btn-outline-light{background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
+.btn-outline-light:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
 
 /* ---------- hero ---------- */
-.hero{padding:clamp(52px,9vw,110px) 0 clamp(40px,6vw,64px)}
-.hero h1{font-size:clamp(2.3rem,6.4vw,3.9rem);max-width:15ch;margin-bottom:1.4rem}
+.hero{padding:clamp(48px,8vw,96px) 0 clamp(36px,5vw,56px)}
+.hero h1{font-size:clamp(2.2rem,6.2vw,3.8rem);max-width:16ch;margin-bottom:1.4rem}
 .hero h1 em{font-style:normal;color:var(--green)}
 .tagline{
   font-family:var(--mono);font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;
@@ -98,27 +148,193 @@ a{color:inherit}
 }
 .lede{font-size:1.08rem;max-width:54ch;color:var(--ink-soft);margin:0 0 1.2rem}
 .lede strong{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
 
-.soon{
-  display:inline-flex;align-items:center;gap:.6rem;
-  font-family:var(--mono);font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--green-deep);background:var(--green-tint);
-  border:1px solid var(--green);border-radius:2px;padding:.45rem .8rem;margin-bottom:1.8rem;
-}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none}
-
-/* ---------- connect band ---------- */
-.band{background:var(--green-deep);color:#EAF1EB;padding:clamp(40px,6vw,64px) 0}
-.band h2{color:#fff;font-size:clamp(1.5rem,3.2vw,2.1rem);max-width:20ch;margin-bottom:.9rem}
-.band p{color:#B9CFBE;max-width:52ch;margin:0 0 1.8rem;font-size:1rem}
-.band-cta{display:flex;flex-wrap:wrap;gap:.75rem}
-
-/* ---------- donate ---------- */
+/* ---------- generic section ---------- */
 .sec{padding:clamp(48px,7vw,84px) 0}
 .sec h2{font-size:clamp(1.6rem,3.4vw,2.3rem);max-width:20ch;margin-bottom:1.2rem}
 .sec p{max-width:58ch;color:var(--ink-soft)}
 .sec p + p{margin-top:1rem}
+.sec.alt{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.pull{
+  font-family:var(--display);font-size:clamp(1.3rem,3vw,1.75rem);line-height:1.25;
+  color:var(--ink);max-width:26ch;margin:2rem 0;padding-left:1.1rem;
+  border-left:3px solid var(--gold);font-variation-settings:"opsz" 96;
+}
 
+/* ---------- portrait ---------- */
+.about-grid{
+  display:grid;grid-template-columns:minmax(0,270px) 1fr;
+  gap:clamp(22px,4vw,44px);align-items:start;margin-top:1.6rem;
+}
+.portrait{margin:0}
+.portrait img{
+  display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  background:var(--rule);border-radius:2px;
+  border-bottom:3px solid var(--green);
+}
+.portrait figcaption{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;
+  color:var(--ink-soft);margin-top:.65rem;line-height:1.5;
+}
+.about-grid > .col > p:first-child{margin-top:0}
+@media(max-width:680px){
+  .about-grid{grid-template-columns:1fr}
+  .portrait{max-width:240px}
+}
+
+/* ---------- dark band ---------- */
+.band{background:var(--green-deep);color:#EAF1EB;padding:clamp(40px,6vw,64px) 0}
+.band h2{color:#fff;font-size:clamp(1.5rem,3.2vw,2.1rem);max-width:22ch;margin-bottom:.9rem}
+.band p{color:#B9CFBE;max-width:52ch;margin:0 0 1.2rem;font-size:1rem}
+.band p b{color:#fff;font-weight:600}
+.band-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.8rem}
+
+/* ---------- platform pillars ---------- */
+.pillars{margin-top:2.4rem;border-top:1px solid var(--rule)}
+.pillar{border-bottom:1px solid var(--rule)}
+.pillar > summary{
+  list-style:none;cursor:pointer;padding:1.5rem 2.4rem 1.5rem 0;position:relative;
+  display:block;
+}
+.pillar > summary::-webkit-details-marker{display:none}
+.pillar .n{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--green);
+  display:block;margin-bottom:.5rem;
+}
+.pillar .t{
+  font-family:var(--display);font-weight:600;font-size:clamp(1.15rem,2.6vw,1.5rem);
+  line-height:1.2;letter-spacing:-.015em;display:block;font-variation-settings:"opsz" 96;
+}
+.pillar .s{display:block;color:var(--ink-soft);font-size:.97rem;margin-top:.55rem;max-width:56ch}
+.pillar > summary::after{
+  content:"+";position:absolute;right:.2rem;top:1.5rem;
+  font-family:var(--mono);font-size:1.3rem;color:var(--green);line-height:1;
+}
+.pillar[open] > summary::after{content:"–"}
+.pillar .body{padding:0 0 1.8rem}
+.pillar .body p{font-size:.97rem;max-width:58ch}
+.pillar .body p:first-child{margin-top:0}
+.facts{
+  margin:1.4rem 0 0;padding:1.1rem 1.2rem;background:var(--paper-2);
+  border-left:2px solid var(--green);
+}
+.sec.alt .facts{background:#fff}
+.facts h4{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;margin:0 0 .7rem;color:var(--green);
+}
+.facts ul{margin:0;padding:0;list-style:none}
+.facts li{
+  padding:.32rem 0 .32rem 1.2rem;position:relative;font-size:.88rem;color:var(--ink-soft);
+  line-height:1.55;
+}
+.facts li::before{content:"";position:absolute;left:0;top:.85em;width:6px;height:1.5px;background:var(--green)}
+
+/* ---------- jurisdiction two-col ---------- */
+.jur{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-top:2.2rem;border:1px solid var(--rule)}
+.jur > div{background:var(--paper);padding:clamp(18px,3vw,26px)}
+.sec.alt .jur > div{background:var(--paper-2)}
+.jur h3{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:500;margin:0 0 .9rem;
+}
+.jur .yes h3{color:var(--green)}
+.jur .no h3{color:var(--ink-soft)}
+.jur ul{margin:0;padding:0;list-style:none}
+.jur li{font-size:.9rem;padding:.34rem 0;color:var(--ink-soft);border-bottom:1px solid var(--rule)}
+.jur li:last-child{border-bottom:none}
+.jur .yes li{color:var(--ink)}
+@media(max-width:620px){ .jur{grid-template-columns:1fr} }
+
+/* ---------- how to vote ---------- */
+.vote-steps{counter-reset:v;margin:2rem 0 0;padding:0;list-style:none}
+.vote-steps li{
+  counter-increment:v;position:relative;padding:1.1rem 0 1.1rem 3.2rem;
+  border-bottom:1px solid rgba(255,255,255,.18);
+}
+.vote-steps li:last-child{border-bottom:none}
+.vote-steps li::before{
+  content:counter(v);position:absolute;left:0;top:1.05rem;
+  font-family:var(--mono);font-size:.78rem;color:var(--green-deep);
+  background:#8FBF9E;width:1.7rem;height:1.7rem;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.vote-steps b{display:block;color:#fff;font-weight:600;font-size:1rem;margin-bottom:.2rem}
+.vote-steps span{color:#B9CFBE;font-size:.93rem}
+.key-dates{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18);margin-top:2rem;
+}
+.key-dates div{background:var(--green-deep);padding:1rem 1.1rem}
+.key-dates dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#9DC5A9;margin-bottom:.3rem}
+.key-dates dd{margin:0;color:#fff;font-weight:600;font-size:.97rem;line-height:1.3}
+
+/* ---------- sign, staked in a yard ---------- */
+.sign{margin:2rem 0 0;max-width:460px}
+.yard{
+  position:relative;
+  padding:clamp(22px,5vw,36px) clamp(22px,5vw,36px) 110px;
+  background:linear-gradient(180deg,#EEF2EA 0%,#E2EADD 52%,#D2DFC8 100%);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  overflow:hidden;
+}
+/* the ground */
+.yard::before{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:46px;
+  background:linear-gradient(180deg,#BFD2B3 0%,#A9C09A 100%);
+}
+/* soft shadow cast on the grass */
+.yard::after{
+  content:"";position:absolute;left:50%;bottom:34px;transform:translateX(-50%);
+  width:66%;height:18px;z-index:1;
+  background:radial-gradient(ellipse at center, rgba(24,48,22,.30) 0%, rgba(24,48,22,0) 70%);
+}
+.sign-stand{position:relative;z-index:2}
+.sign-stand img{
+  display:block;width:100%;height:auto;border-radius:1px;
+  transform:rotate(-.9deg);transform-origin:50% 100%;
+  box-shadow:0 12px 24px rgba(18,63,46,.22), 0 2px 5px rgba(18,63,46,.20);
+}
+/* the two stakes */
+.sign-stand::before,
+.sign-stand::after{
+  content:"";position:absolute;bottom:-64px;width:8px;height:70px;z-index:-1;
+  background:linear-gradient(90deg,#7E6E52 0%,#A3906C 45%,#6F6047 100%);
+  border-radius:1px;
+}
+.sign-stand::before{left:24%}
+.sign-stand::after{right:24%}
+
+.sign figcaption{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;
+  color:var(--ink-soft);margin-top:.65rem;line-height:1.5;
+}
+
+/* ---------- help / form ---------- */
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:2rem;max-width:640px}
+.fields .full{grid-column:1 / -1}
+.f label{
+  display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:.35rem;
+}
+.f input,.f textarea{
+  width:100%;font-family:var(--body);font-size:.95rem;color:var(--ink);
+  background:#fff;border:1px solid var(--rule);border-radius:2px;padding:.62rem .7rem;
+}
+.f textarea{min-height:86px;resize:vertical}
+.checks{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.2rem}
+.checks label{
+  display:inline-flex;align-items:center;gap:.45rem;font-family:var(--body);
+  font-size:.9rem;text-transform:none;letter-spacing:0;color:var(--ink);
+  background:#fff;border:1px solid var(--rule);border-radius:2px;padding:.5rem .75rem;cursor:pointer;
+}
+.checks input{accent-color:var(--green);width:15px;height:15px}
+.form-note{font-size:.84rem;margin-top:1rem;color:var(--ink-soft);max-width:52ch}
+@media(max-width:560px){ .fields{grid-template-columns:1fr} }
+
+/* ---------- ways to give ---------- */
 .ways{margin:2rem 0 0;border-top:1px solid var(--rule)}
 .way{
   display:grid;grid-template-columns:9rem 1fr;gap:1.5rem;
@@ -130,10 +346,7 @@ a{color:inherit}
 @media(max-width:560px){ .way{grid-template-columns:1fr;gap:.3rem} }
 
 /* ---------- the 300 ---------- */
-.three{
-  margin:2.2rem 0 0;padding:clamp(22px,4vw,34px);
-  background:var(--green-deep);color:#EAF1EB;
-}
+.three{margin:2.2rem 0 0;padding:clamp(22px,4vw,34px);background:var(--green-deep);color:#EAF1EB}
 .three .num{
   font-family:var(--display);font-weight:600;font-size:clamp(3.4rem,11vw,5.6rem);
   line-height:.9;letter-spacing:-.03em;color:#fff;font-variation-settings:"opsz" 144;
@@ -145,22 +358,14 @@ a{color:inherit}
 }
 .three p{color:#B9CFBE;max-width:50ch;font-size:.97rem;margin:0 0 1rem}
 .three p b{color:#fff;font-weight:600}
-
-.grid300{
-  display:grid;grid-template-columns:repeat(30,1fr);gap:3px;
-  margin:1.6rem 0 .8rem;max-width:420px;
-}
-.grid300 i{
-  display:block;aspect-ratio:1;background:rgba(255,255,255,.14);border-radius:1px;
-}
+.grid300{display:grid;grid-template-columns:repeat(30,1fr);gap:3px;margin:1.6rem 0 .8rem;max-width:420px}
+.grid300 i{display:block;aspect-ratio:1;background:rgba(255,255,255,.14);border-radius:1px}
 .grid300 i.on{background:#8FBF9E}
 @media(max-width:520px){ .grid300{grid-template-columns:repeat(20,1fr)} }
 .grid-cap{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:#9DC5A9;margin:0}
 
-.rules{
-  margin-top:2.4rem;background:var(--paper-2);border:1px solid var(--rule);
-  padding:clamp(20px,4vw,32px);
-}
+.rules{margin-top:2.4rem;background:var(--paper-2);border:1px solid var(--rule);padding:clamp(20px,4vw,32px)}
+.sec.alt .rules{background:#fff}
 .rules h3{
   font-family:var(--mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
   font-weight:500;margin:0 0 1rem;color:var(--ink);
@@ -171,52 +376,480 @@ a{color:inherit}
 .rules p{font-size:.86rem;margin-top:1rem}
 
 /* ---------- footer ---------- */
-.foot{padding:2.4rem 0 3rem;font-size:.8rem;color:var(--ink-soft);border-top:1px solid var(--rule)}
-.foot .auth{font-family:var(--mono);font-size:.72rem;line-height:1.75}
+.foot{padding:2.6rem 0 3rem;font-size:.8rem;color:var(--ink-soft);border-top:1px solid var(--rule)}
+.foot .auth{font-family:var(--mono);font-size:.72rem;line-height:1.75;max-width:60ch}
+.foot .links{margin-top:1rem;display:flex;flex-wrap:wrap;gap:1.2rem;font-size:.8rem}
+.foot .links a{color:var(--green);text-decoration:none}
+.foot .links a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
 
-<main>
+<a class="skip" href="#main">Skip to content</a>
 
-  <section class="hero">
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="mark" href="#top">Paul&nbsp;for&nbsp;Perth</a>
+    <ul>
+      <li><a class="l" href="#about">Who I am</a></li>
+      <li><a class="l" href="#question">The question</a></li>
+      <li><a class="l" href="#platform">Platform</a></li>
+      <li><a class="l" href="#council">What council controls</a></li>
+      <li><a class="l" href="#help">Help out</a></li>
+      <li><a class="l" href="#chip">Chip in</a></li>
+    </ul>
+    <div class="vote"><a href="#vote">How to vote</a></div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="hero" id="top">
     <div class="wrap">
       <p class="eyebrow">Town of Perth &nbsp;/&nbsp; Municipal election &nbsp;/&nbsp; October 26, 2026</p>
 
       <p class="tagline">Perth's growth should work for Perth.</p>
 
-      <h1>Paul Quinnell is running for <em>Perth Council</em>.</h1>
-
-      <div class="soon"><span class="dot"></span> Full campaign site coming soon</div>
+      <h1>Who is Perth <em>growing for?</em></h1>
 
       <p class="lede">
-        I'm 41, I have a young family here, and I'm running for one of five council seats.
-        Perth is growing. I want a council that asks who pays, who benefits, and what it means
-        for daily life before it approves the next thing.
+        I'm Paul Quinnell. I'm 41, I have a young family here, and I'm running for one of
+        five seats on Perth Council.
       </p>
       <p class="lede">
-        The full platform goes up here shortly. Until then, the fastest way to follow along
-        is Facebook.
+        Perth is planning for <strong>10,500 people by 2054</strong>. That is roughly a third
+        more than live here now. Growth of that size is not automatically good or bad. It
+        depends entirely on who pays for it and who it is built for.
       </p>
-    </div>
-  </section>
+      <p class="lede">
+        That is the question I want on the table before council approves the next thing.
+      </p>
 
-  <section class="band on-dark">
-    <div class="wrap">
-      <p class="eyebrow">Connect</p>
-      <h2>Follow the campaign on Facebook.</h2>
-      <p>
-        Updates, where I'll be, and short videos from around town. It's also the easiest
-        place to ask me something and get an answer.
-      </p>
-      <div class="band-cta">
-        <a class="btn btn-light" href="https://www.facebook.com/PaulForPerth">Elect Paul for Perth Council</a>
-        <a class="btn btn-light" style="background:transparent;border-color:rgba(255,255,255,.5);color:#fff" href="mailto:paulquinnell@gmail.com">Email me</a>
+      <div class="hero-cta">
+        <a class="btn" href="#platform">Read the platform</a>
+        <a class="btn btn-ghost" href="#vote">How voting works this year</a>
       </div>
     </div>
   </section>
 
-  <section class="sec">
+  <!-- ============================ WHO I AM ============================ -->
+  <section class="sec alt" id="about">
+    <div class="wrap">
+      <p class="eyebrow">Who I am</p>
+      <h2>I grew up in social housing. I chose to live here.</h2>
+
+      <div class="about-grid">
+
+        <figure class="portrait">
+          <!-- TODO: upload your photo to the repo root and name it paul.jpg,
+               or change the filename below to match what you uploaded.
+               Portrait orientation works best. Roughly 800x1000 pixels is plenty.
+               Keep it under about 300 KB so the page loads fast on phones. -->
+          <img src="paul_quinnell.jpg" alt="Paul Quinnell, candidate for Town of Perth Council" loading="lazy">
+          <figcaption>Paul Quinnell.</figcaption>
+        </figure>
+
+        <div class="col">
+          <p>
+            I grew up in social housing in rural England. My family did not have much, and the
+            difference between a decent childhood and a hard one came down to decisions made by
+            people I never met. Council decisions, mostly. That is not an abstract idea to me.
+          </p>
+          <p>
+            I came to Canada, and out of everywhere I could have settled, I picked this town.
+            My family lives on Garden Avenue. My kids will grow up here. I am not passing through
+            and I am not building a career on the way to somewhere else.
+          </p>
+          <p>
+            I am not a developer, a landlord, or a lawyer. I read the by-laws, the budget and the
+            Official Plan because someone should, and because most of what frustrates people about
+            this town is already written down in a document nobody reads.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ THE QUESTION ============================ -->
+  <section class="sec" id="question">
+    <div class="wrap">
+      <p class="eyebrow">The question</p>
+      <h2>Growth is coming. The terms are still open.</h2>
+
+      <p>
+        Perth's Official Plan sets a target of 10,500 residents by 2054, drawn from the
+        County's growth allocation and the 2024 Residential Lands Needs Assessment. The
+        2024 Official Plan update moved effectively all remaining developable land in town
+        into development designations. The land is designated. The applications are in
+        motion.
+      </p>
+      <p>
+        What has not been settled is the part that lands on your tax bill. Who pays for the
+        water mains, the road capacity, the stormwater systems and the recreation facilities
+        that a bigger town needs. Whether any of the new housing is priced for the people
+        already living here or only for the people arriving.
+      </p>
+      <p>
+        Those are council decisions. Not provincial ones, not federal ones. Council sets the
+        development charges. Council approves the zoning. Council passes the budget. The next
+        four years are when those terms get written.
+      </p>
+
+      <p class="pull">
+        Building it right the first time costs less than fixing it later.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ PLATFORM ============================ -->
+  <section class="sec alt" id="platform">
+    <div class="wrap">
+      <p class="eyebrow">Platform</p>
+      <h2>Four things I would push for.</h2>
+      <p>
+        Short version at the top of each. Tap any of them for the detail and the documents
+        behind it.
+      </p>
+
+      <div class="pillars">
+
+        <details class="pillar">
+          <summary>
+            <span class="n">01</span>
+            <span class="t">Homes for people who already live here</span>
+            <span class="s">
+              Sequencing matters. Rules should be written before the approvals they are meant
+              to govern, and affordability should be a real conversation early, not a form
+              filed after the decision.
+            </span>
+          </summary>
+          <div class="body">
+            <p>
+              Perth spent twenty-six years operating under a zoning by-law passed in 2000.
+              The replacement was adopted in August 2026. In the years while it was being
+              written, some of the largest development decisions in the town's recent history
+              were being made under the old rules.
+            </p>
+            <p>
+              I do not think that was anyone's plan. I think it is what happens when a town
+              takes on a growth target before it updates the framework that governs growth.
+              The order matters, and I would rather council learned that lesson than repeated it.
+            </p>
+            <p>
+              The Official Plan already contains a pre-consultation policy on affordability at
+              section 8.1.3.9. My view is that it should function as a genuine early
+              conversation about unit mix and price point, held while the design is still
+              changeable, rather than a box ticked once the shape of a project is already set.
+            </p>
+            <p>
+              There is also a timing issue worth knowing about. Under the Planning Act, once a
+              municipality passes a new comprehensive zoning by-law, privately initiated
+              amendments are restricted for two years unless council specifically allows them.
+              That window is a real opportunity to get the framework right, and it closes.
+            </p>
+            <div class="facts">
+              <h4>What this is based on</h4>
+              <ul>
+                <li>Zoning By-law 3358, in force from 2000 until August 2026.</li>
+                <li>Staff report 2026-COW-5.6, Town of Perth New Zoning By-law discussion draft.</li>
+                <li>Official Plan section 8.1.3.9, affordability pre-consultation.</li>
+                <li>Planning Act restriction on privately initiated amendments following a new comprehensive zoning by-law.</li>
+                <li>OLT-23-000534, settlement for roughly 940 units at 141 Peter Street.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="pillar">
+          <summary>
+            <span class="n">02</span>
+            <span class="t">Growth should pay its own way</span>
+            <span class="s">
+              Every dollar of growth-related infrastructure that development charges do not
+              cover is a dollar that comes off the tax levy instead. That is an affordability
+              question for people who already live here.
+            </span>
+          </summary>
+          <div class="body">
+            <p>
+              Development charges are the tool municipalities use to make new development pay
+              for the infrastructure it makes necessary. They are not a tax on housing in any
+              meaningful sense. They are a decision about which of two groups pays: the
+              development that creates the demand, or the existing ratepayers who did not.
+            </p>
+            <p>
+              Perth's development charges by-law is By-law 4839, passed in 2019. The Town's
+              own Strategic Plan, under Growth, item B, set 2023 to 2025 as the window to
+              complete a new development charge study. That is the Town's commitment, in the
+              Town's own document, and it is a fair thing to ask about.
+              <!-- TODO: confirm with the Treasurer whether a new DC by-law has since been
+                   passed. If it has, this paragraph needs rewriting before publication. -->
+            </p>
+            <p>
+              Two other tools sit unused. Community Benefits Charges are available under the
+              Planning Act for buildings of five storeys or more. Perth's current zoning caps
+              height below that threshold in most areas, so the charge would not bite today.
+              I would still want the by-law in place before anyone asks for extra height,
+              rather than after, because the negotiating position is entirely different in
+              each case.
+            </p>
+            <p>
+              The other is the federal Housing Design Catalogue, which offers pre-approved
+              designs that cut approval time and cost for small builders. Municipalities can
+              sign on as local partners. It costs the Town very little and it helps exactly
+              the kind of small local builder who cannot absorb a long approvals process.
+              <!-- TODO: confirm whether Perth has already joined as a Local Partner. -->
+            </p>
+            <div class="facts">
+              <h4>What this is based on</h4>
+              <ul>
+                <li>Development Charges By-law 4839, passed 2019.</li>
+                <li>Strategic Plan 2023 to 2027, Growth item B: complete new development charge study, 2023 to 2025.</li>
+                <li>Planning Act section 37, Community Benefits Charges, five storey threshold.</li>
+                <li>Canada Housing Design Catalogue, Local Partner program.</li>
+                <li>Canada-Ontario Development Charge Reduction Program, council application approved June 2026.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="pillar">
+          <summary>
+            <span class="n">03</span>
+            <span class="t">Built for the weather we're getting</span>
+            <span class="s">
+              Climate spending is not an add-on to the capital plan. It is the cheapest version
+              of repairs the town is going to make anyway.
+            </span>
+          </summary>
+          <div class="body">
+            <p>
+              Perth adopted a Climate Change Action Plan in 2017. The Strategic Plan commits
+              the Town to building climate change adaptation in when replacing infrastructure,
+              and to applying a climate lens to asset replacement decisions. Both are listed
+              as ongoing.
+            </p>
+            <p>
+              Commitments listed as ongoing are the ones most easily quietly dropped in a
+              tight budget year. My interest is narrow and practical: when a culvert, a storm
+              sewer or a road is being replaced anyway, was it sized for the rainfall we are
+              now getting, or for the rainfall we used to get. The incremental cost of the
+              larger pipe at the time of replacement is small. The cost of doing it twice is not.
+            </p>
+            <p>
+              This is the least ideological item on this list. It is an asset management
+              argument. It happens to also be a climate argument.
+            </p>
+            <div class="facts">
+              <h4>What this is based on</h4>
+              <ul>
+                <li>Town of Perth Climate Change Action Plan, adopted 2017.</li>
+                <li>Strategic Plan 2023 to 2027, Quality of Life item B: build in climate change adaptation when replacing infrastructure, ongoing.</li>
+                <li>Strategic Plan, Quality of Life item B: urban tree cover plan, 2024 to 2027.</li>
+                <li>Official Plan sections 5.3 and 7.3, climate resilient design expectations for development applications.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="pillar">
+          <summary>
+            <span class="n">04</span>
+            <span class="t">A councillor who actually shows up</span>
+            <span class="s">
+              Not a policy. A commitment about how I would do the job.
+            </span>
+          </summary>
+          <div class="body">
+            <p>
+              I would attend the meetings, read the packages before the meetings, and be at
+              the votes. That should be a low bar and mostly it is. This term it also happens
+              to matter arithmetically.
+            </p>
+            <p>
+              Ontario's strong mayor powers took effect in Perth on May 1, 2025. Every sitting
+              member of council voted on April 14, 2025 to formally oppose them and to ask to
+              be removed. The Province proceeded anyway. Under those rules the mayor proposes
+              the budget, council can amend it by majority, the mayor can veto, and it takes
+              five votes to override that veto.
+            </p>
+            <p>
+              Five votes on a seven member council. An absent councillor is not a neutral
+              outcome in that arithmetic. It is a vote for whatever the veto protects.
+            </p>
+            <p>
+              I would also answer emails. If you write to me and I disagree with you, you will
+              get a reply saying so and explaining why, rather than no reply at all.
+            </p>
+            <div class="facts">
+              <h4>What this is based on</h4>
+              <ul>
+                <li>Council resolution of April 14, 2025 opposing the expansion of strong mayor powers.</li>
+                <li>Ontario strong mayor powers in effect in Perth from May 1, 2025.</li>
+                <li>Municipal Act veto override threshold of two thirds of council.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ JURISDICTION ============================ -->
+  <section class="sec" id="council">
+    <div class="wrap">
+      <p class="eyebrow">What council controls</p>
+      <h2>A councillor cannot fix your wait at the hospital.</h2>
+
+      <p>
+        Municipal campaigns collect promises about things municipalities do not run. It is an
+        easy way to sound responsive and a reliable way to disappoint people later.
+      </p>
+      <p>
+        Here is the honest split. Everything in my platform sits in the left column. Where
+        something in the right column matters to Perth, and a lot of it does, the real work
+        is advocacy through the County, AMO, ROMA and the Eastern Ontario Wardens' Caucus,
+        plus keeping the tax levy stable enough that people can afford to live here while
+        those fights play out.
+      </p>
+
+      <div class="jur">
+        <div class="yes">
+          <h3>Perth Council decides</h3>
+          <ul>
+            <li>Zoning and planning approvals</li>
+            <li>Development charges and levies</li>
+            <li>The annual budget and tax levy</li>
+            <li>Water and sewer rate structure</li>
+            <li>Roads, sidewalks, parks, arena</li>
+            <li>Building and property standards</li>
+            <li>Community Improvement Plans</li>
+            <li>Disposal of surplus Town land</li>
+          </ul>
+        </div>
+        <div class="no">
+          <h3>Perth Council does not decide</h3>
+          <ul>
+            <li>Hospital funding and doctor supply</li>
+            <li>Schools and school board budgets</li>
+            <li>Affordable housing units, run at the County level</li>
+            <li>Provincial housing and planning law</li>
+            <li>Income supports and social assistance rates</li>
+            <li>Interest rates, trade and immigration</li>
+            <li>The pool building, owned by the school board</li>
+            <li>Police services board funding formula</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top:1.6rem;font-size:.9rem">
+        If I am elected and you ask me for something in the right column, I will tell you it
+        is in the right column, and then tell you who does decide it and what I can usefully
+        do about it. That is worth more than a promise I cannot keep.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ HOW TO VOTE ============================ -->
+  <section class="band on-dark" id="vote">
+    <div class="wrap">
+      <p class="eyebrow">How to vote</p>
+      <h2>There are no paper ballots this year.</h2>
+      <p>
+        Perth is voting by internet and telephone only. If you are waiting for a polling
+        station to open near you, it is not coming. <b>The letter from the Town is the thing
+        that matters.</b> It contains the PIN you need to vote, and without it you cannot.
+      </p>
+
+      <ol class="vote-steps">
+        <li>
+          <b>Make sure you are on the voters' list</b>
+          <span>Check and update your registration at registertovoteon.ca. If you have moved, changed your name, or turned 18 recently, do this now.</span>
+        </li>
+        <li>
+          <b>Watch for your PIN letter in the mail</b>
+          <span>The Town mails it to the address on the voters' list. Do not throw it out. If it has not arrived, contact the Town Clerk's office.</span>
+        </li>
+        <li>
+          <b>Vote online or by phone between October 19 and October 26</b>
+          <span>You can vote any time in that window from anywhere. It takes a few minutes.</span>
+        </li>
+        <li>
+          <b>You have five votes for council</b>
+          <span>Five seats, no wards, everyone in town chooses from the same list. You can use all five. I am asking for one of them.</span>
+        </li>
+      </ol>
+
+      <!-- TODO: confirm the exact voting open and close times, and the PIN letter
+           mailing date, with Amanda Noel at anoel@perth.ca before publishing. -->
+      <dl class="key-dates">
+        <div><dt>Voting opens</dt><dd>October 19, 2026</dd></div>
+        <div><dt>Voting closes</dt><dd>October 26, 2026</dd></div>
+        <div><dt>Term begins</dt><dd>November 15, 2026</dd></div>
+        <div><dt>Seats on council</dt><dd>Five, elected at large</dd></div>
+      </dl>
+
+      <div class="band-cta">
+        <a class="btn btn-light" href="https://registertovoteon.ca">Check your registration</a>
+        <a class="btn btn-outline-light" href="https://www.perth.ca/our-government/elections/">Town election page</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ HELP OUT ============================ -->
+  <section class="sec alt" id="help">
+    <div class="wrap">
+      <p class="eyebrow">Help out</p>
+      <h2>A lawn sign is the cheapest advertising in a small town.</h2>
+
+      <p>
+        This campaign has no staff. What it has is people willing to put a sign on their lawn,
+        knock on a few doors, or tell a neighbour why they are voting the way they are. In a
+        town this size that is worth more than any budget.
+      </p>
+      <p>
+        Signs go up from September 14. Fill this in and I will get back to you personally.
+      </p>
+
+      <figure class="sign">
+        <div class="yard">
+          <div class="sign-stand">
+            <!-- Filenames are case sensitive on GitHub Pages. This must match the
+                 uploaded file exactly, including the .png extension. -->
+            <img src="sign.png" alt="Paul Quinnell for Perth Council lawn sign" loading="lazy">
+          </div>
+        </div>
+        <figcaption>This is the sign. It goes on a lawn, not a hydro pole.</figcaption>
+      </figure>
+
+      <div class="fields">
+        <div class="f"><label for="hname">Your name</label><input id="hname" type="text" autocomplete="name"></div>
+        <div class="f"><label for="hemail">Email</label><input id="hemail" type="email" autocomplete="email"></div>
+        <div class="f full"><label for="haddr">Street address in Perth</label><input id="haddr" type="text" autocomplete="street-address"></div>
+        <div class="f full">
+          <label>I can help with</label>
+          <div class="checks">
+            <label><input type="checkbox" class="hchk" value="A lawn sign"> A lawn sign</label>
+            <label><input type="checkbox" class="hchk" value="Door knocking"> Door knocking</label>
+            <label><input type="checkbox" class="hchk" value="Talking to neighbours"> Talking to neighbours</label>
+            <label><input type="checkbox" class="hchk" value="Hosting a coffee"> Hosting a coffee</label>
+            <label><input type="checkbox" class="hchk" value="Just keep me posted"> Just keep me posted</label>
+          </div>
+        </div>
+        <div class="f full"><label for="hmsg">Anything else</label><textarea id="hmsg"></textarea></div>
+        <div class="full"><button class="btn" id="hsend" type="button">Send this to Paul</button></div>
+      </div>
+      <p class="form-note">
+        This opens your own email app with the message ready to send. Nothing is stored on this
+        website and nothing is collected by anyone but me.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ CHIP IN ============================ -->
+  <section class="sec" id="chip">
     <div class="wrap">
       <p class="eyebrow">Chip in</p>
       <h2>Signs, printing and postage are the whole budget.</h2>
@@ -228,23 +861,18 @@ a{color:inherit}
 
       <div class="three">
         <span class="num">300</span>
-        <span class="num-lab">Neighbours, coming soon</span>
+        <span class="num-lab">Neighbours</span>
         <p>
-          Here's the plan I'm building toward. <b>300 people in Perth</b>, each chipping in
-          about <b>$10</b>. Not a handful of large cheques. Three hundred neighbours with
-          their name on this.
-        </p>
-        <p>
-          Sign-ups open with the full site. If you want to be one of the first,
-          email me and I'll put you on the list.
+          Here's the plan. <b>300 people in Perth</b>, each chipping in about <b>$10</b>.
+          Not a handful of large cheques. Three hundred neighbours with their name on this.
         </p>
         <div class="grid300" aria-hidden="true" id="g300"></div>
-        <p class="grid-cap">One square per person. The count goes live when sign-ups open.</p>
+        <p class="grid-cap" id="g300cap">One square per person.</p>
       </div>
 
       <p style="margin-top:2.4rem">
-        You don't have to wait for that to contribute. Any amount helps, and $10 from a
-        neighbour is worth more to this campaign than the cheque it's written on.
+        Any amount helps, and $10 from a neighbour is worth more to this campaign than the
+        cheque it's written on.
       </p>
 
       <dl class="ways">
@@ -276,26 +904,91 @@ a{color:inherit}
     </div>
   </section>
 
+  <!-- ============================ CONTACT ============================ -->
+  <section class="band on-dark" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Ask me something.</h2>
+      <p>
+        If you disagree with something on this site, I would rather hear it now than read it
+        in a comment section in October. I answer my own email.
+      </p>
+      <div class="band-cta">
+        <a class="btn btn-light" href="mailto:paulquinnell@gmail.com">paulquinnell@gmail.com</a>
+        <a class="btn btn-outline-light" href="https://www.facebook.com/PaulForPerth">Facebook</a>
+      </div>
+      <!-- TODO: add a phone number here, or delete this comment. -->
+    </div>
+  </section>
+
 </main>
 
 <footer class="foot">
   <div class="wrap">
     <p class="auth">
-      Authorized by the Chief Financial Officer for the Paul Quinnell campaign.
-      &nbsp;/&nbsp; paul4perth.ca
+      Published by the campaign of Paul Quinnell, candidate for Town of Perth Council.
+      <a href="mailto:paulquinnell@gmail.com">paulquinnell@gmail.com</a>
+    </p>
+    <!-- Identification, not authorization. Ontario's Municipal Elections Act has no
+         chief financial officer role. The requirement is that campaign advertising
+         identify the campaign it belongs to, so voters can tell it apart from a
+         registered third-party advertiser. Use this same wording on signs, door
+         hangers and any boosted Facebook post. Check Perth By-law No. 5016 with the
+         Clerk in case the Town adds local requirements on top. -->
+    <div class="links">
+      <a href="#platform">Platform</a>
+      <a href="#vote">How to vote</a>
+      <a href="#chip">Chip in</a>
+      <a href="https://www.perth.ca/our-government/elections/">Town of Perth elections</a>
+    </div>
+    <p style="margin-top:1.2rem;font-size:.78rem">
+      Paul Quinnell, candidate for Town of Perth Council. Election day is October 26, 2026.
     </p>
   </div>
 </footer>
 
 <script>
-/* Renders 300 squares. To show early sign-ups, change the number below. */
+/* ---- the 300 grid -------------------------------------------------
+   Change `filled` to the number of people who have actually contributed.
+   Leave it at 0 until the campaign bank account is open and money has
+   been received and receipted. ------------------------------------- */
 (function(){
-  var filled = 0;               /* <-- how many of the 300 are signed up */
+  var filled = 36;
   var g = document.getElementById('g300');
   if(!g) return;
   var html = '';
   for(var i=0;i<300;i++){ html += '<i class="'+(i<filled?'on':'')+'"></i>'; }
   g.innerHTML = html;
+  var cap = document.getElementById('g300cap');
+  if(cap && filled > 0){ cap.textContent = 'One square per person. ' + filled + ' so far.'; }
+})();
+
+/* ---- volunteer form, composes a mailto link ---------------------- */
+(function(){
+  var btn = document.getElementById('hsend');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var v = function(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; };
+    var name = v('hname'), email = v('hemail'), addr = v('haddr'), msg = v('hmsg');
+    var picks = [];
+    document.querySelectorAll('.hchk').forEach(function(c){ if(c.checked) picks.push(c.value); });
+
+    if(!name || !email){
+      alert('Please add your name and email so I can get back to you.');
+      return;
+    }
+
+    var body =
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Address: ' + (addr || 'not given') + '\n' +
+      'Can help with: ' + (picks.length ? picks.join(', ') : 'not specified') + '\n\n' +
+      (msg || '');
+
+    window.location.href = 'mailto:paulquinnell@gmail.com'
+      + '?subject=' + encodeURIComponent('Campaign help from ' + name)
+      + '&body=' + encodeURIComponent(body);
+  });
 })();
 </script>
 
