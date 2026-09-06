@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Golos Text", system-ui, sans-serif;
+  --font-label: "IBM Plex Mono", monospace;
+
+  --color-perth-green: #2F6C4F;
+  --color-perth-gold: #D6A84B;
+  --color-perth-blue: #002D69;
+  --container-site: 90rem;
+  --color-perth-green-50: #F1F6F2;
+--color-perth-blue-50: #EDF1F7;
+--color-perth-sand: #FBF6EC;
+--color-perth-stone: #F4F4F2;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
