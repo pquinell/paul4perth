@@ -9,7 +9,7 @@ export const support = {
 export const pledge = {
   target: 300,
   amount: 10,
-  current: 36,
+  current: 46,
   updated: "2026-09-03",
   headline: "300 people, $10 each",
   body: [
