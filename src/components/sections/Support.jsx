@@ -1,6 +1,5 @@
 import Section from "../layout/Section";
 import { support } from "../../content/support";
-import Contribute from "./Contribute";
 import Volunteer from "./Volunteer";
 
 export default function Support({ id }) {
@@ -14,7 +13,6 @@ export default function Support({ id }) {
         {support.intro}
       </p>
 
-      <Contribute />
       <Volunteer />
     </Section>
   );

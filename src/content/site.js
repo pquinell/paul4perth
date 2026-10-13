@@ -9,6 +9,12 @@ export const site = {
     opensLabel: "Monday 19 October 2026",
     closesLabel: "Monday 26 October 2026",
     windowLabel: "19 to 26 October 2026",
+    // Eastern Daylight Time (UTC-4) runs until 1 November, so both use -04:00.
+    opensAt: "2026-10-19T08:30:00-04:00",
+    closesAt: "2026-10-26T20:00:00-04:00",
+    opensTimeLabel: "Monday 19 October, 8:30 a.m.",
+    closesTimeLabel: "Monday 26 October, 8 p.m.",
+    infoUrl: "https://www.perth.ca/elections#voters",
   },
   authorization:
     "Published by the campaign of Paul Quinnell, candidate for Town of Perth Council.",

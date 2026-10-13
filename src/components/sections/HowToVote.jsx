@@ -1,5 +1,6 @@
 import Section from "../layout/Section";
 import { howToVote } from "../../content/howToVote";
+import { site } from "../../content/site";
 
 export default function HowToVote({ id }) {
   const { window, methods, steps, clerk } = howToVote;
@@ -14,6 +15,16 @@ export default function HowToVote({ id }) {
         Voting is open {window}. There are no polling stations. Every ballot in
         this election is cast online or by telephone.
       </p>
+
+      <a
+        href={site.voting.infoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-8 inline-block bg-perth-gold px-6 py-3 text-center font-body text-lg text-neutral-900 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        Voter information from the Town of Perth
+        <span className="sr-only"> (opens perth.ca in a new tab)</span>
+      </a>
 
       <div className="mt-10 grid max-w-[68ch] gap-8 sm:mt-12 sm:grid-cols-2">
         {methods.map((m) => (

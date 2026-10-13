@@ -1,6 +1,6 @@
 export const support = {
   intro:
-    "This is a small campaign in a small town. It runs on people, and on the money it takes to print things and put them in front of neighbours.",
+    "This is a small campaign in a small town. It runs on people.",
   forms: {
     volunteer: "https://forms.gle/bdp5qk7sToQZefRYA", // Google Form URL
   },

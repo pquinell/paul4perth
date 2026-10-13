@@ -3,12 +3,15 @@ import About from "./components/sections/About";
 import Consultation from "./components/sections/Consultation";
 import TheQuestion from "./components/sections/TheQuestion";
 import Pillars from "./components/sections/Pillars";
+import FirstSixMonths from "./components/sections/FirstSixMonths";
+import Media from "./components/sections/Media";
 import ShowUp from "./components/sections/ShowUp";
 import NotPromising from "./components/sections/NotPromising";
 import HowToVote from "./components/sections/HowToVote";
 import Gallery from "./components/sections/Gallery";
 import Support from "./components/sections/Support";
 import Ask from "./components/sections/Ask";
+import { media } from "./content/media";
 
 // The one place the page is assembled. App renders these in order and passes each
 // section its id, so the anchor a nav link points at cannot drift from the section
@@ -20,10 +23,12 @@ import Ask from "./components/sections/Ask";
 //   cta       renders this section's nav link as a button rather than a text link
 export const sections = [
   { id: "top", Component: Hero },
-  { id: "about", Component: About, navLabel: "About Paul" },
+  { id: "about", Component: About },
   { id: "consultation", Component: Consultation, enabled: false },
   { id: "question", Component: TheQuestion, navLabel: "The question" },
   { id: "platform", Component: Pillars, navLabel: "Platform" },
+  { id: "first-six-months", Component: FirstSixMonths, navLabel: "First 6 months" },
+  { id: "media", Component: Media, navLabel: "Media", enabled: media.items.length + media.posts.length > 0 },
   { id: "show-up", Component: ShowUp, enabled: false },
   {
     id: "not-promising",
